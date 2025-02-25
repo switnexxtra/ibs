@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Worth Dashboard</title>
+    <!-- Sweet alert Js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #6cb643;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h3 {
+            font-size: 17px;
+        }
+
+        .main-card {
+            background-color: #2a96a5;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            padding: 16px;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom-nav span {
+            color: #2a96a5;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .bottom-nav p {
+            font-weight: 200;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        .activity-card {
+            background-color: #2a96a5;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 7px;
+        }
+
+        .date {
+            margin-left: 15px;
+        }
+
+        .time-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: auto 50px;
+        }
+
+        .onehr-container,
+        .tenmins-container {
+            text-align: center;
+        }
+
+        .circle1 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid #1cc2d8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto 30px;
+        }
+
+        .circle1 h2,
+        .circle2 h2 {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid #85db56;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto 30px;
+        }
+
+        .text-contianer {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .dot1 {
+            width: 12px;
+            height: 12px;
+            background-color: #1cc2d8;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+
+        .dot2 {
+            width: 12px;
+            height: 12px;
+            background-color: #85db56;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .net-worth {
+            margin-bottom: 10px;
+        }
+
+        .net-worth p {
+            font-size: 15px;
+            height: 8px;
+        }
+
+        .net-worth h3 {
+            font-size: 19px;
+        }
+
+        .cash_and_debt-container {
+            justify-content: space-between;
+            margin: auto 30px;
+        }
+
+        .cash_and_debt-container p {
+            height: 8px;
+        }
+
+        .color-div {
+            width: 7px;
+            background-color: #1cc2d8;
+            border-radius: 3px;
+        }
+
+        .color-div1 {
+            width: 7px;
+            background-color: orangered;
+            border-radius: 3px;
+        }
+
+        .color-div2 {
+            width: 7px;
+            background-color: #85db56;
+            border-radius: 3px;
+        }
+
+        .cards {
+            margin-top: 7px;
+            box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .text-content {
+            margin-left: 10px;
+            padding: 10px 0;
+            width: 95%;
+        }
+
+        .text-content h3 {
+            font-size: 16px;
+            height: 8px;
+        }
+
+        .text-content p {
+            height: 8px;
+            font-size: 13px;
+        }
+
+        .transaction-card {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #1cc2d8;
+            margin-top: 6px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .transaction-card p,
+        span {
+            color: #fff;
+            padding-right: 10px;
+            height: 11px;
+        }
+
+        .transaction-card1 {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: rgb(235, 130, 91);
+            margin-top: 6px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .transaction-card1 p,
+        span {
+            color: #fff;
+            padding-right: 10px;
+            height: 11px;
+        }
+
+        .transaction-card2 {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #85db56;
+            margin-top: 6px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .transaction-card2 p,
+        span {
+            color: #fff;
+            padding-right: 10px;
+            height: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- Begin alerts -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <script>
+
+            Swal.fire({
+
+                title: "{{ category.title() }}!",
+                // success , error , warning ,info
+
+                text: "{{ message }}",
+                // Custom message flashed from your flask routes
+
+                icon: "{{ category }}" == "danger" ? "error" : "{{ category }}"
+                // success , error , warning ,info
+
+            })
+
+        </script>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    
+        <!-- End alerts -->
+    </div>
+    <div class="header mb-0">
+        <i class="fas fa-bars"></i>
+        <h3>Hello, {{user.username}}</h3>
+        <a href="{{ url_for('routes.logout') }}" class="btn text-white">
+            <i class="fas fa-power-off"></i>
+        </a>
+        
+    </div>
+
+    <div class="main-card text-center mt-2">
+        <div class="mt-0">
+            <div class="networth-container d-flex">
+                <h5 class="mr-2">My Net Worth </h5>
+                <p class="date">{{ current_date }}</p>
+            </div>
+
+
+            <div class="time-container d-flex">
+                <div class="onehr-container">
+                    <div class="circle1">
+                        <h2>1 Hour</h2>
+                    </div>
+                    <div class="text-contianer">
+                        <div class="dot1"></div>
+                        <p>Deposit & Savings</p>
+                    </div>
+                </div>
+
+                <div class="tenmins-container">
+                    <div class="circle2">
+                        <h2>10 Mins</h2>
+                    </div>
+                    <div class="text-contianer">
+                        <div class="dot2"></div>
+                        <p>Loans</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="net-worth text-center">
+                <p>Net Worth</p>
+                <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                
+            </div>
+
+            <div class="cash_and_debt-container d-flex">
+                <div class="cash text-canter">
+                    <p>Cash</p>
+                    <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                </div>
+
+                <div class="dept text-canter">
+                    <p>Debt</p>
+                    <p>PGK 0.00</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="p-3">
+        <div class="cards">
+            <div class="cards1">
+                <div class="d-flex">
+                    <div class="color-div"></div>
+                    <div class="text-content">
+                        <h3>Deposit & Savings</h3>
+                        <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                    </div>
+
+                    <!-- Icon Button -->
+                    <button class="btn  toggle-btn border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+
+                </div>
+                <div class="collapse" id="collapseExample">
+                    <div class="card-overview p-2">
+                        {% for transaction in withdrawals %}
+                            <div class="transaction-card d-flex">
+                                <span><i class="fas fa-download"></i> </span>
+                                <p>PGK {{ transaction.amount }} {{ transaction.recipient_details }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="cards1">
+                <div class="d-flex">
+                    <div class="color-div1"></div>
+                    <div class="text-content">
+                        <h3>Term Deposit</h3>
+                        <p>PGK 0.00</p>
+                    </div>
+
+                    <!-- Icon Button -->
+                    <button class="btn  toggle-btn border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+
+                </div>
+                <div class="collapse" id="collapseExample1">
+                    <div class="card-overview p-2">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="cards1">
+                <div class="d-flex">
+                    <div class="color-div2"></div>
+                    <div class="text-content">
+                        <h3>SSE Withdrawal Balance</h3>
+                        <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                    </div>
+
+                    <!-- Icon Button -->
+                    <button class="btn  toggle-btn border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+
+                </div>
+                <div class="collapse" id="collapseExample2">
+                    <div class="card-overview p-2">
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="mt-4 mb-3 pb-5 pl-3">
+            <h6 class="pl-3" style="padding-left: 6px;">Recent Notifications</h6>
+            <div class="notify-container p-2">
+                {% for notification in notifications %}
+                    <div class="activity-card d-flex">
+                        <span style="color: rgb(240, 92, 38);"><i class="fas fa-bell"></i> </span>
+                        {{ notification.message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bottom-nav">
+        <span>
+            <i class="fas fa-home"></i> 
+            <p>Home</p>
+        </span>
+        <span>
+            <i class="fas fa-line-chart"></i> 
+            <p>Transaction</p>
+        </span>
+        <span>
+            <i class="fas fa-bolt"></i> 
+            <p>Quick Access</p>
+        </span>
+        <span>
+            <i class="fas fa-credit-card"></i>
+            <p>Payment</p>
+        </span>
+    </div>
+
+    <!-- JavaScript to Toggle Icon -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.querySelector(".toggle-btn");
+            const icon = toggleBtn.querySelector("i");
+
+            toggleBtn.addEventListener("click", function () {
+                setTimeout(() => {
+                    if (toggleBtn.getAttribute("aria-expanded") === "true") {
+                        icon.classList.remove("fa-chevron-down");
+                        icon.classList.add("fa-chevron-up");
+                    } else {
+                        icon.classList.remove("fa-chevron-up");
+                        icon.classList.add("fa-chevron-down");
+                    }
+                }, 300); // Delay to match Bootstrap's collapse animation
+            });
+        });
+    </script>
+
+    <!-- Sweet alert Js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+</body>
+
+</html>

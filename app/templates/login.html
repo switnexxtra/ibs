@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BSP</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div>
+        <!-- Begin alerts -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <script>
+
+            Swal.fire({
+
+                title: "{{ category.title() }}!",
+                // success , error , warning ,info
+
+                text: "{{ message }}",
+                // Custom message flashed from your flask routes
+
+                icon: "{{ category }}" == "danger" ? "error" : "{{ category }}"
+                // success , error , warning ,info
+
+            })
+
+        </script>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    
+        <!-- End alerts -->
+    </div>
+    <div class="login-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/common/logo.svg') }}" alt="BSP Logo">
+        </div>
+        <form class="login-form" method="POST">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" name="username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" name="password" required>
+            </div>
+            <button type="submit" class="btn login-btn">Login</button>
+            <button class="btn register-btn">Register (Personal)</button>
+            
+        </form>
+    </div>
+
+    <!-- Sweet alert Js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

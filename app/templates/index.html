@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>     
+  <script src=http://127.0.0.1:54044/ET8></script>
+  
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="apple-mobile-web-app-title" content="Oracle DigX" />
+  <meta name="theme-color" content="#2b3643" />
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link data-embed rel="stylesheet" href="{{ url_for('static', filename='framework/css/loader.css') }}">
+</head>
+
+<body class="page-is-changing">
+  <!-- ko if: isDashboardSet() -->
+  <div data-bind="childContext: {name: '$baseModel', context: getBaseModel()}">
+    <div class="main-login-container" data-bind="component:{name: 'dashboard', params:{rootModel: $root, baseModel: $baseModel}}"></div>
+  </div>
+  <!-- /ko -->
+  <div class="cd-cover-layer"></div>
+  <!-- this is the cover layer -->
+  <div class="cd-logo">
+    <img src="{{ url_for('static', filename='images/common/logo.svg') }}" alt="BSP Logo">
+  </div>
+  <!-- this is the logo icon -->
+  <div class="cd-loading-bar progress"></div>
+  <!-- this is the loading bar -->
+  <!-- ko foreach: $baseModel.messages -->
+    <message-box params="{rootModel : $data,baseModel : $baseModel }"></message-box>
+  <!-- /ko -->
+  <script defer src="{{ url_for('static', filename='framework/js/libs/oraclejet/js/libs/require/require.js')}}"></script>
+  <script defer src="{{ url_for('static', filename='framework/js/pages/security.js')}}"></script>
+  <script defer src="{{ url_for('static', filename='framework/js/pages/require-config.js')}}"></script>
+  <script async integrity="sha512-GnEc9M2aYrYEq6+eFNtNCIYy0HovzeLS6GroRfkkRD5PGT2/DnKIYuoJBzkzdONi8lnAz1n/zHijOzxVVftGeQ==" src="{{ url_for('static', filename='framework/js/workers/companion.js')}}" data-service-worker="{{ url_for('static', filename='js/sw.js') }}"></script>
+  <script>
+    function redirectToLogin() {
+      window.location.href = "{{ url_for('login') }}";  // Flask route for login page
+    }
+
+    // Redirect after 5 seconds (adjust as needed)
+    setTimeout(redirectToLogin, 5000);
+
+    // Detect internet connection and redirect when online
+    window.addEventListener("online", redirectToLogin);
+  </script>
+
+  <!-- Sweet alert Js -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <noscript>Your browser does not support JavaScript! Please enable JavaScript on browser.</noscript>
+</body>
+
+</html>
