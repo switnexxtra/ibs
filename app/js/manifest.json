@@ -1,0 +1,23 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "Oracle Banking Digital Experience",
+    "description": "Oracle Banking Digital Experience offers a best-of-breed solution that includes digital marketing, customer and product acquisition, service, and social-engagement tools to enable banks to modernize their digital channels.",
+    "short_name": "OBDX",
+    "icons": [{
+        "src": "/images/logo/logo_64x64.png",
+        "sizes": "64x64"
+    }, {
+        "src": "/images/logo/logo_128x128.png",
+        "sizes": "128x128"
+    }, {
+        "src": "/images/logo/logo_192x192.png",
+        "sizes": "192x192"
+    }],
+    "scope": "/index/",
+    "start_url": "/pages/home.html",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "theme_color": "aliceblue",
+    "background_color": "red"
+}
