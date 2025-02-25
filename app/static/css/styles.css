@@ -1,0 +1,94 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('../images/index/happygirl.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+}
+
+.logo {
+    background: #85db56;
+    padding: 25px;
+    text-align: center;
+}
+
+.logo img {
+    width: 100px;
+    /* margin-bottom: 15px; */
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.input-group i {
+    color: #555;
+    margin-right: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-btn {
+    background: #68a832;
+    color: white;
+}
+
+.register-btn {
+    background: #a3d05b;
+    color: white;
+}
+
+.links {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.links a {
+    color: #555;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
