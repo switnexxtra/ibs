@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=True)
     acc_balance = db.Column(db.Float, default=0.0)  # Balance updated from Site_A
+    successful_transfer = db.Column(db.Float, default=0.0)  # New field to track withdrawn balance
 
     def __repr__(self):
         return f'<User {self.username}>'
