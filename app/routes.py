@@ -8,7 +8,7 @@ from config import Config
 
 routes = Blueprint('routes', __name__)
 
-SITE_A_API_URL = "https://enegsseinvestmentteam.onrender.com/accounts/api/login"
+SITE_A_API_URL = "http://127.0.0.1:5000/accounts/api/login"
 
 
 from flask import request, redirect, url_for
@@ -48,6 +48,7 @@ def login():
             session["username"] = data.get("username")
             session["auth_token"] = data.get("token")  # Store token if needed
             session["withdrawn_balance"] = "{:,.2f}".format(float(data.get("withdrawn_balance", 0)))
+            session["successful_transfer"] = "{:,.2f}".format(float(data.get("successful_transfer", 0)))
             # Fetch user object from database
             user = User.query.filter_by(id=data.get("user_id")).first()
 
@@ -78,7 +79,8 @@ def dashboard():
         "username": session.get("username"),
         "email": session.get("email"),
         "user_id": session.get("user_id"),
-        "withdrawn_balance": float(session.get("withdrawn_balance", "0").replace(",", ""))
+        "withdrawn_balance": float(session.get("withdrawn_balance", "0").replace(",", "")),
+        "successful_transfer": float(session.get("successful_transfer", "0").replace(",", ""))
         # "withdrawn_balance": session.get("withdrawn_balance")  # Include acc_balance
     }
 
