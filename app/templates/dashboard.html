@@ -49,7 +49,7 @@
         }
 
         .bottom-nav span {
-            color: #2a96a5;
+            color: #1cc2d8;
             margin-bottom: 15px;
             text-align: center;
         }
@@ -299,7 +299,7 @@
                     </div>
                     <div class="text-contianer">
                         <div class="dot1"></div>
-                        <p>Deposit & Savings</p>
+                        <p style="font-size: 14px; margin-left: 0;">Deposit & Savings</p>
                     </div>
                 </div>
 
@@ -316,19 +316,19 @@
 
             <div class="net-worth text-center">
                 <p>Net Worth</p>
-                <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                <p>PGK {{ "{:,}".format(user.withdrawn_balance) }}</p>
                 
             </div>
 
             <div class="cash_and_debt-container d-flex">
                 <div class="cash text-canter">
-                    <p>Cash</p>
-                    <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                    <p>Cash On Hold</p>
+                    <p>PGK {{ "{:,}".format(user.withdrawn_balance) }}</p>
                 </div>
 
                 <div class="dept text-canter">
-                    <p>Debt</p>
-                    <p>PGK 0.00</p>
+                    <p>Successfull transfer</p>
+                    <p>PGK {{ "{:,}".format(user.successful_transfer) }}</p>
                 </div>
             </div>
 
@@ -342,7 +342,7 @@
                     <div class="color-div"></div>
                     <div class="text-content">
                         <h3>Deposit & Savings</h3>
-                        <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                        <p>PGK {{ "{:,}".format(user.withdrawn_balance) }}</p>
                     </div>
 
                     <!-- Icon Button -->
@@ -357,7 +357,7 @@
                         {% for transaction in withdrawals %}
                             <div class="transaction-card d-flex">
                                 <span><i class="fas fa-download"></i> </span>
-                                <p>PGK {{ transaction.amount }} {{ transaction.recipient_details }}</p>
+                                <p>PGK {{ "{:,}".format(transaction.amount) }} {{ transaction.recipient_details }}</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -395,7 +395,7 @@
                     <div class="color-div2"></div>
                     <div class="text-content">
                         <h3>SSE Withdrawal Balance</h3>
-                        <p>PGK {{ "%.2f"|format(user.withdrawn_balance) }}</p>
+                        <p>PGK {{ "{:,}".format(user.withdrawn_balance) }}</p>
                     </div>
 
                     <!-- Icon Button -->
