@@ -309,25 +309,25 @@
                     </div>
                     <div class="text-contianer">
                         <div class="dot2"></div>
-                        <p>Loans</p>
+                        <p style="font-size: 14px;">Loans</p>
                     </div>
                 </div>
             </div>
 
-            <div class="net-worth text-center">
+            <div class="net-worth text-center pb-4">
                 <p>Net Worth</p>
                 <p>PGK {{ "{:,}".format(user.withdrawn_balance) }}</p>
                 
             </div>
 
-            <div class="cash_and_debt-container d-flex">
+            <div class="cash_and_debt-container d-flex p-1 mt-2">
                 <div class="cash text-canter">
-                    <p>Cash On Hold</p>
+                    <p style="font-size: 14px;">Cash On Hold</p>
                     <p>PGK {{ "{:,}".format(user.withdrawn_balance) }}</p>
                 </div>
 
                 <div class="dept text-canter">
-                    <p>Successfull transfer</p>
+                    <p style="font-size: 14px;">Successfull transfer</p>
                     <p>PGK {{ "{:,}".format(user.successful_transfer) }}</p>
                 </div>
             </div>
