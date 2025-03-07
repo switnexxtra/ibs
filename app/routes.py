@@ -8,7 +8,7 @@ from config import Config
 
 routes = Blueprint('routes', __name__)
 
-SITE_A_API_URL = "http://127.0.0.1:5000/accounts/api/login"
+SITE_A_API_URL = "https://enegsseinvestmentteam.onrender.com/accounts/api/login"
 
 
 from flask import request, redirect, url_for
